@@ -1,7 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 // PACKAGE
 import 'package:flutter/material.dart';
-import 'package:myapp/features/login/api/loginReq.dart';
-import 'package:myapp/features/login/app/input/formLogin.dart';
+import 'package:myapp/features/home/view/home_screen.dart';
+import 'package:myapp/features/login/api/login_req.dart';
+import 'package:myapp/features/login/app/input/login_form.dart';
 import 'package:myapp/features/register/view/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool rememberMe = false;
+  bool isError = false;
 
    // INITIALIZATION
   @override
@@ -48,13 +52,24 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               emailController: emailController, 
               passwordController: passwordController, 
               rememberMe: rememberMe, 
+              isError: isError,
               onRememberMeChanged: (value) {
                 setState(() {
                   rememberMe = value;
                 });
               }, 
-              onLoginPressed: () {
-                LoginReq().loginRequest(context, emailController.text, passwordController.text);
+              onLoginPressed: () async {
+                final bool success = await LoginReq().loginRequest(context, emailController.text, passwordController.text);
+                if (success) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                } else {
+                  setState(() {
+                    isError = !success;
+                  });
+                }
               }, 
 
               onRegisterPressed: () {

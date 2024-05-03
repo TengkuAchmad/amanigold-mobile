@@ -65,20 +65,20 @@ class _MainLayoutState extends State<MainLayout> {
                   duration: const Duration(milliseconds: 400),
                   tabBackgroundColor: Colors.grey[100]!,
                   color: Colors.grey,
-                  tabs: [
-                    const GButton(
+                  tabs: const [
+                    GButton(
                       icon: LineIcons.home,
                       text: 'Home',
                     ),
-                    const GButton(
+                    GButton(
                       icon: LineIcons.heart,
                       text: 'Likes',
                     ),
-                    const GButton(
+                    GButton(
                       icon: LineIcons.search,
                       text: 'Search',
                     ),
-                    const GButton(
+                    GButton(
                       icon: LineIcons.user,
                       text: 'Profile',
                     ),

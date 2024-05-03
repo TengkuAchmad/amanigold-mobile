@@ -208,7 +208,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding:
                   EdgeInsets.only(top: 20, bottom: 5, left: screenWidth * 0.06),
-              child: Text(
+              child: const Text(
                 "Fluktuasi Harga Emas (by Antam)",
                 style: TextStyle(
                   color: Colors.white,
@@ -229,12 +229,12 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Container(
                       width: screenWidth,
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(
+                      child: const Text(
                         "12% 2120349/gram",
                         style: TextStyle(
                           color: Colors.white,
@@ -246,12 +246,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Container(
                       width: screenWidth,
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(
+                      child: const Text(
                         "12% 2120349/gram",
                         style: TextStyle(
                           color: Colors.white,
@@ -263,12 +263,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Container(
                       width: screenWidth,
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(
+                      child: const Text(
                         "12% 2120349/gram",
                         style: TextStyle(
                           color: Colors.white,
@@ -286,7 +286,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding:
                   EdgeInsets.only(top: 20, bottom: 5, left: screenWidth * 0.06),
-              child: Text(
+              child: const Text(
                 "Frequently Asked Question",
                 style: TextStyle(
                   color: Colors.white,
@@ -307,12 +307,12 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Container(
                       width: screenWidth,
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(
+                      child: const Text(
                         "Bagaimana cara membeli kartu?",
                         style: TextStyle(
                           color: Colors.white,
@@ -324,12 +324,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Container(
                       width: screenWidth,
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(
+                      child: const Text(
                         "Dimana saya dapat menjual kartu ini?",
                         style: TextStyle(
                           color: Colors.white,
@@ -341,12 +341,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Container(
                       width: screenWidth,
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(
+                      child: const Text(
                         "Bagaimana jika kartu saya hilang?",
                         style: TextStyle(
                           color: Colors.white,

@@ -6,7 +6,8 @@ class UrlConfig {
 
 
   // FUNCTIONAL API
-  static const String loginUrl = '$baseUrl/$userUrl/auth';
+  static const String identityUrl = '$baseUrl/$userUrl';
+  static const String loginUrl    = '$baseUrl/$userUrl/auth';
   static const String registerUrl = '$baseUrl/$userUrl';
-  static const String logoutUrl = '$baseUrl/$userUrl/logout';
+  static const String logoutUrl   = '$baseUrl/$userUrl/logout';
 }

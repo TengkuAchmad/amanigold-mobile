@@ -1,8 +1,8 @@
 // PACKAGE
 import 'package:flutter/material.dart';
 import 'package:myapp/features/login/view/login_screen.dart';
-import 'package:myapp/features/register/api/registerReq.dart';
-import 'package:myapp/features/register/app/input/formRegister.dart';
+import 'package:myapp/features/register/api/register_req.dart';
+import 'package:myapp/features/register/app/input/register_form.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -17,7 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-
+  bool isError = false;
 
    // INITIALIZATION
   @override
@@ -51,8 +51,12 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
               passwordController: passwordController,
               nameController: nameController,
               phoneController: phoneController,
-              onRegisterPressed: () {
-                RegisterReg().registerRequest(context, emailController.text, passwordController.text, nameController.text, phoneController.text);
+              isError: isError,
+              onRegisterPressed: () async {
+               final bool success = await RegisterReg().registerRequest(context, emailController.text, passwordController.text, nameController.text, phoneController.text);
+                setState(() {
+                  isError = !success;
+                });
               },
 
               onLoginPressed: () {
