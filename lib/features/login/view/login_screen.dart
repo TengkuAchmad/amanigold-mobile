@@ -2,7 +2,7 @@
 
 // PACKAGE
 import 'package:flutter/material.dart';
-import 'package:myapp/features/home/view/home_screen.dart';
+import 'package:myapp/features/home/organizer/home_organizer.dart';
 import 'package:myapp/features/login/api/login_req.dart';
 import 'package:myapp/features/login/app/input/login_form.dart';
 import 'package:myapp/features/register/view/register_screen.dart';
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 if (success) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => const HomeOrganizer()),
                   );
                 } else {
                   setState(() {

@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/features/home/app/article.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -92,35 +92,7 @@ class HomeScreen extends StatelessWidget {
             // SESSION INFO END
 
             // CAROUSEL CONTENT
-            CarouselSlider(
-              items: [
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  width: screenWidth * 0.8,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Colors.black, Colors.black],
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: const Text("Content Carousel",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white)),
-                )
-              ],
-              options: CarouselOptions(
-                height: screenHeight * 0.2,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                aspectRatio: 9 / 16,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                viewportFraction: 0.8,
-              ),
-            ),
+            const Article(),
             // CAROUSEL CONTENT END
 
             // USER GOLD INFO

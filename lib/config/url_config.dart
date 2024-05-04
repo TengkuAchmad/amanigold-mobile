@@ -3,6 +3,7 @@ class UrlConfig {
   static const String userUrl = 'user-management';
   static const String goldUrl = 'gold-management';
   static const String cardUrl = 'card-management';
+  static const String contentUrl = 'content-management';
 
 
   // FUNCTIONAL API
@@ -10,4 +11,7 @@ class UrlConfig {
   static const String loginUrl    = '$baseUrl/$userUrl/auth';
   static const String registerUrl = '$baseUrl/$userUrl';
   static const String logoutUrl   = '$baseUrl/$userUrl/logout';
+
+  // CONTENT
+  static const String getContent = '$baseUrl/$contentUrl';
 }
