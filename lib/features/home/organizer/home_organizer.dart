@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/features/home/api/article_request.dart';
-import 'package:myapp/features/home/view/home_screen.dart';
 import 'package:myapp/features/home/view/loading_screen.dart';
+import 'package:myapp/global/layouts/main_layout.dart';
 
 class HomeOrganizer extends StatelessWidget {
   const HomeOrganizer({super.key});
@@ -9,7 +9,7 @@ class HomeOrganizer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: ArticleReq().articleRequest(context),
+      future: ArticleReq().articleRequest(context), 
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingScreen();
@@ -21,7 +21,7 @@ class HomeOrganizer extends StatelessWidget {
             ),
           );
         } else {
-          return const HomeScreen();
+          return MainLayout();
         }
       },
     );

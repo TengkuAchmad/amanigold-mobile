@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:logger/logger.dart';
 import 'package:myapp/features/home/data/article_data.dart';
 
 class Article extends StatefulWidget {
@@ -10,14 +9,16 @@ class Article extends StatefulWidget {
   // ignore: library_private_types_in_public_api
   _ArticleState createState() => _ArticleState();
 }
-class _ArticleState extends State<Article> {
+class _ArticleState extends State<Article> with SingleTickerProviderStateMixin{
   List<Map<String, dynamic>>_articleData = [];
-  var logger = Logger();
+
+  int _currentImageIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _loadContentData();
+    
   }
 
   Future<void> _loadContentData() async {
@@ -26,70 +27,94 @@ class _ArticleState extends State<Article> {
       setState(() {
        _articleData = articleData;
       });
-      logger.i(_articleData);
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+@override
+Widget build(BuildContext context) {
+  final screenWidth = MediaQuery.of(context).size.width;
+  final screenHeight = MediaQuery.of(context).size.height;
 
-    return CarouselSlider(
-      items: _articleData.map((content) {
-        return Container(
-          padding: const EdgeInsets.all(4),
-          width: screenWidth * 0.8,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Colors.black, Colors.black],
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          child: Image.network(
-            content['Url_CD'] ?? '',
-            fit: BoxFit.fill,
-            loadingBuilder: (context, child, loadingProgress) {
-              if (loadingProgress == null){
-                return child;
-              }
-              return Center(
-                child: CircularProgressIndicator(
-                  value: loadingProgress.expectedTotalBytes != null ?
-                  loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+  return Column(
+    children: [
+      CarouselSlider(
+        items: _articleData.map((content) {
+          return Padding(
+            padding:  EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.06, vertical: screenWidth * 0.01),
+            child: 
+            Container(
+              width: screenWidth,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black, Colors.black],
                 ),
-              );
-            },
-          ),
-          // child: Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     Text(
-          //       content['Title_CD'] ?? '', // Tampilkan judul dari data
-          //       style: const TextStyle(color: Colors.white),
-          //     ),
-          //     const SizedBox(height: 10),
-          //     Text(
-          //       content['Description_CD'] ?? '', // Tampilkan deskripsi dari data
-          //       style: const TextStyle(color: Colors.white),
-          //     ),
-          //     // Tambahkan widget lain sesuai kebutuhan
-          //   ],
-          // ),
-      );
-      }).toList(),
-      options: CarouselOptions(
-        height: screenHeight * 0.2,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        aspectRatio: 9 / 16,
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enableInfiniteScroll: true,
-        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-        viewportFraction: 0.8,
+                borderRadius: BorderRadius.all(Radius.circular(10))
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                child: 
+                Image.network(
+                  content['Url_CD'] ?? '',
+                  fit: BoxFit.fill,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null){
+                      return child;
+                    } 
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null ?
+                        loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+                      ),
+                    );
+                  },
+                ),
+                
+              ) 
+            ),
+          );
+        }).toList(),
+
+        options: CarouselOptions(
+          height: screenHeight * 0.23,
+          enlargeCenterPage: true,
+          autoPlay: true,
+          aspectRatio: 9 / 16,
+          autoPlayCurve: Curves.fastOutSlowIn,
+          enableInfiniteScroll: true,
+          autoPlayAnimationDuration: const Duration(milliseconds: 800),
+          viewportFraction: 1,
+          onPageChanged: (index, reason){
+            setState(() {
+              _currentImageIndex = index;
+            });
+          },
+          
+        ),
       ),
-    );
-  }
+
+      const SizedBox(height: 2),
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: _articleData.map((content) {
+          int index = _articleData.indexOf(content);
+          return Container(
+            width: 6.0,
+            height: 6.0,
+            margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _currentImageIndex == index ? Colors.white : Colors.grey,
+            ),
+          );
+        }).toList(),
+      ),
+
+    ],
+  );
+}
+
 }

@@ -14,4 +14,7 @@ class UrlConfig {
 
   // CONTENT
   static const String getContent = '$baseUrl/$contentUrl';
+
+  // GOLD
+  static const String getGold    = "https://logam-mulia-api.vercel.app/prices/hargaemas-com";
 }

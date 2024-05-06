@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 // CONFIG
 import 'package:myapp/config/url_config.dart';
+import 'package:myapp/features/home/api/usergold_request.dart';
 
 // WIDGETS
 import 'package:myapp/features/home/data/article_data.dart';
@@ -41,7 +42,14 @@ class ArticleReq {
         await ArticleData().articlePrefs(context, response.data);
 
         if (contentDataSaved){
-          return true;
+          bool requestGoldData = 
+            await UserGoldReq().userGoldRequest(context);
+          
+          if (requestGoldData) {
+            return true;
+          } else {
+            return false;
+          }
         } else {
           return false;
         }
