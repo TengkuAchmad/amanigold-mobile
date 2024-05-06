@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/features/home/app/menu.dart';
-import 'package:myapp/features/home/app/article.dart';
-import 'package:myapp/features/home/app/gold.dart';
 import 'package:myapp/features/profile/app/profile_head.dart';
 
 class ProfileScreen extends StatelessWidget {
