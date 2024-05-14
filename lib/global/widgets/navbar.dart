@@ -50,7 +50,7 @@ class _ExampleState extends State<Example> {
           boxShadow: [
             BoxShadow(
               blurRadius: 20,
-              color: Colors.black.withOpacity(.1),
+              color: Colors.black.withOpacity(0.3),
             )
           ],
         ),

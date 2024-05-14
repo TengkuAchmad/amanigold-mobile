@@ -2,10 +2,11 @@
 
 // PACKAGE
 import 'package:flutter/material.dart';
-import 'package:myapp/features/home/organizer/home_organizer.dart';
 import 'package:myapp/features/login/api/login_req.dart';
 import 'package:myapp/features/login/app/input/login_form.dart';
 import 'package:myapp/features/register/view/register_screen.dart';
+import 'package:myapp/global/layouts/main_layout.dart';
+import 'package:myapp/global/provider/services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -63,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 if (success) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeOrganizer()),
+                    MaterialPageRoute(builder: (context) => const DataService()),
                   );
                 } else {
                   setState(() {

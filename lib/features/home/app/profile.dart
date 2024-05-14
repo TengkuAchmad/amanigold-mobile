@@ -10,7 +10,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  late String _name;
+  late String _name = '';
   late String _userName = '';
 
   @override

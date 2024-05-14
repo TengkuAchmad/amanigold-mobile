@@ -10,8 +10,8 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:myapp/config/url_config.dart';
 
 // WIDGETS
-import 'package:myapp/features/login/api/identity_req.dart';
 import 'package:myapp/features/login/data/login_data.dart';
+import 'package:myapp/features/login/data/login_validator.dart';
 
 class LoginReq {
   Future<bool> loginRequest(BuildContext context, String email, String password) async {
@@ -46,13 +46,7 @@ class LoginReq {
         bool loginSuccess = await LoginData().loginPrefs(context, response.data);
 
         if (loginSuccess) {
-          bool getIdentity = await IdentityReq().identityRequest(context);
-
-          if (getIdentity) {
-            return true;
-          } else {
-            return false;
-          }
+          return true;
         } else {
           return false;
         }

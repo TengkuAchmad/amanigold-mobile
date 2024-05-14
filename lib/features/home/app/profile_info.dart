@@ -69,21 +69,21 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Selamat Datang!',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'SFProDisplay',
-                      fontSize: 12.0,
+                      fontSize: screenWidth * 0.05,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
                     _userName,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'SFProDisplay',
-                      fontSize: 12.0,
+                      fontSize: screenWidth * 0.05,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
@@ -96,7 +96,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
         const Icon(
           Icons
               .notifications_outlined, 
-          color: Colors.grey,
+          color: Colors.white,
         ),
       ],
     ),

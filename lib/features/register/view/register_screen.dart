@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/features/login/view/login_screen.dart';
 import 'package:myapp/features/register/api/register_req.dart';
 import 'package:myapp/features/register/app/input/register_form.dart';
+import 'package:myapp/features/register/app/response/succesResponse.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -57,6 +58,13 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
                 setState(() {
                   isError = !success;
                 });
+
+                Navigator.push(
+                  // ignore: use_build_context_synchronously
+                  context,
+                  MaterialPageRoute(builder: (context) => const SuccessResponse()),
+                );
+
               },
 
               onLoginPressed: () {

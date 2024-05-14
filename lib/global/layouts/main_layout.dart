@@ -1,11 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:myapp/features/home/view/home_screen.dart';
 import 'package:myapp/features/profile/view/profile_screen.dart';
-
+import 'package:myapp/features/scan/app/qrscan.dart';
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 
@@ -16,27 +15,23 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text(
-      'Likes',
-      style: optionStyle,
-    ),
+    QRScannerScreen(),
     ProfileScreen(),
-    Text(
-      'Profile',
-      style: optionStyle,
-    ),
   ];
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: Stack(
+        children: [
+          Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          )
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(

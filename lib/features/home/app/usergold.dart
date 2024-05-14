@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/features/home/data/usergold_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserGold extends StatefulWidget {
   const UserGold({super.key});
@@ -9,24 +9,21 @@ class UserGold extends StatefulWidget {
   _GoldState createState() => _GoldState();
 }
 class _GoldState extends State<UserGold> with SingleTickerProviderStateMixin{
-  List<Map<String, dynamic>> _goldData = [];
+  late String _goldUser = "0";
+  late String _balanceUser = "0";
 
   @override
   void initState() {
     super.initState();
-    _loadContentData();
+    _loadGoldData();
     
   }
 
-  Future<void> _loadContentData() async {
-    // ignore: use_build_context_synchronously
-    List<Map<String, dynamic>>? goldData = await UserGoldData().getGoldPrefs(context);
-
-    if (goldData != null) {
-      setState(() {
-        _goldData = goldData;
-      });
-    }
+  Future<void> _loadGoldData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _goldUser = prefs.getString('user_gold') ?? '';
+    _balanceUser = prefs.getString('user_balance') ?? '';
+    setState(() {});
   }
 
 @override
@@ -49,11 +46,11 @@ Widget build(BuildContext context) {
             ],
           ),
           borderRadius: BorderRadius.circular(15)),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Your Balance",
             style: TextStyle(
               color: Colors.white,
@@ -66,8 +63,8 @@ Widget build(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "IDR 120.300",
-                style: TextStyle(
+                'IDR $_balanceUser',
+                style: const TextStyle(
                   color: Colors.white,
                   fontFamily: 'SFProDisplay',
                   fontSize: 22,
@@ -76,17 +73,17 @@ Widget build(BuildContext context) {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.monetization_on_rounded,
                     color: Colors.amber,
                     size: 16,
                   ),
 
-                   SizedBox(width: 5),
+                   const SizedBox(width: 5),
 
                   Text(
-                    "0.1 gram",
-                    style: TextStyle(
+                     '$_goldUser gram',
+                    style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'SFProDisplay',
                       fontSize: 14,

@@ -29,8 +29,6 @@ Future<List<Map<String, dynamic>>?> getArticlePrefs(BuildContext context) async 
 
     final jsonDatas = json.decode(jsonString!);
 
-    // logger.i('Data json string $jsonDatas');
-
     final List<Map<String, dynamic>>? responseData = jsonDatas != null ? List<Map<String, dynamic>>.from(jsonDatas) : null;
 
     return responseData;
